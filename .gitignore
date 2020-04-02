@@ -10,6 +10,8 @@
 temp/
 dependencies/Bootstrap
 *.csv
+*/imguni.ini
+/physics/imgui.ini
 
 # User-specific files
 *.suo
@@ -241,3 +243,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
