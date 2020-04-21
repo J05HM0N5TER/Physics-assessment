@@ -162,11 +162,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="aabb.cpp" />
+    <ClCompile Include="circle.cpp" />
+    <ClCompile Include="collision_manager.cpp" />
+    <ClCompile Include="line.cpp" />
     <ClCompile Include="physicsApp.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="physics_scene.cpp" />
+    <ClCompile Include="rigid_body.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="aabb.h" />
+    <ClInclude Include="circle.h" />
+    <ClInclude Include="collision_manager.h" />
+    <ClInclude Include="line.h" />
     <ClInclude Include="physicsApp.h" />
+    <ClInclude Include="physics_object.h" />
+    <ClInclude Include="physics_scene.h" />
+    <ClInclude Include="rigid_body.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

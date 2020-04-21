@@ -3,7 +3,13 @@
 #include "Application.h"
 #include "Renderer2D.h"
 
-class physicsApp : public aie::Application {
+// Forward declaration
+class physics_scene;
+class circle;
+class aabb;
+
+class physicsApp : public aie::Application 
+{
 public:
 
 	physicsApp();
@@ -17,6 +23,11 @@ public:
 
 protected:
 
-	aie::Renderer2D*	m_2dRenderer;
-	aie::Font*			m_font;
+	aie::Renderer2D* m_2dRenderer;
+	aie::Font* m_font;
+
+	physics_scene* m_physics_scene;
+	circle* star;
+
+	float m_timer;
 };
