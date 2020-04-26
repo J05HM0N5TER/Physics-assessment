@@ -80,7 +80,7 @@ void physicsApp::update(float deltaTime)
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 
-	// Update the camera position using the arrow keys
+	// Update the camera m_position using the arrow keys
 	float camPosX;
 	float camPosY;
 	m_2dRenderer->getCameraPos(camPosX, camPosY);

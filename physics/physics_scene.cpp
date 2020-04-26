@@ -13,29 +13,29 @@ const collision_function physics_scene::collision_functions[] =
 };
 
 
-physics_scene::physics_scene() : time_step(0.01f), gravity(glm::vec2(0, 0))
+physics_scene::physics_scene() : m_time_step(0.01f), m_gravity(glm::vec2(0, 0))
 {
 
 }
 physics_scene::~physics_scene()
 {
-	for (int i = 0; i < objects.size(); ++i)
+	for (int i = 0; i < m_objects.size(); ++i)
 	{
-		delete objects[i];
-		objects[i] = nullptr;
+		delete m_objects[i];
+		m_objects[i] = nullptr;
 	}
-	objects.clear();
+	m_objects.clear();
 }
 
 void physics_scene::add_object(physics_object* a_actor)
 {
-	objects.push_back(a_actor);
+	m_objects.push_back(a_actor);
 }
 
 void physics_scene::remove_object(physics_object* a_actor)
 {
-	auto location = std::find(objects.begin(), objects.end(), a_actor);
-	objects.erase(location);
+	auto location = std::find(m_objects.begin(), m_objects.end(), a_actor);
+	m_objects.erase(location);
 	delete a_actor;
 	a_actor = nullptr;
 }
@@ -43,28 +43,28 @@ void physics_scene::remove_object(physics_object* a_actor)
 void physics_scene::update(float a_delta_time)
 {
 
-	accumulated_time += a_delta_time;
+	m_accumulated_time += a_delta_time;
 
-	while (accumulated_time >= time_step)
+	while (m_accumulated_time >= m_time_step)
 	{
-		for (auto p_object : objects)
+		for (auto p_object : m_objects)
 		{
-			p_object->fixed_update(gravity, time_step);
+			p_object->fixed_update(m_gravity, m_time_step);
 		}
-		accumulated_time -= time_step;
+		m_accumulated_time -= m_time_step;
 	}
 
 	static std::list<physics_object*> dirty;
 
-	int object_count = objects.size();
+	int object_count = m_objects.size();
 
-	//need to check for collisions against all objects except this one.
+	//need to check for collisions against all m_objects except this one.
 	for (int outer = 0; outer < object_count - 1; outer++)
 	{
 		for (int inner = outer + 1; inner < object_count; inner++)
 		{
-			physics_object* object1 = objects[outer];
-			physics_object* object2 = objects[inner];
+			physics_object* object1 = m_objects[outer];
+			physics_object* object2 = m_objects[inner];
 			shape shapeId1 = object1->get_shape();
 			shape shapeId2 = object2->get_shape();
 
@@ -115,7 +115,7 @@ void physics_scene::update(float a_delta_time)
 
 void physics_scene::update_gizmos()
 {
-	for (auto p_object : objects)
+	for (auto p_object : m_objects)
 	{
 		p_object->make_gizmo();
 	}

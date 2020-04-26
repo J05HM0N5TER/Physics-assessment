@@ -25,8 +25,8 @@ public:
 
 private:
 	// The direction that the line is facing
-	glm::vec2 normal = glm::vec2(0, 1);
+	glm::vec2 m_normal = glm::vec2(0, 1);
 	// The vertical offset from world origin (0,0) 
-	float distance_from_origin = 0.0f;
+	float m_distance_from_origin = 0.0f;
 };
 

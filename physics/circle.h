@@ -5,9 +5,9 @@ class circle : public rigid_body
 {
 public:
 	/*	\brief Constructor for circle
-		\param a_position The centre position of the circle
+		\param a_position The centre m_position of the circle
 		\param a_velocity The current direction and force the circle is travelling
-		\param a_mass How much "mass" the object has (how hard it is to change momentum)
+		\param a_mass How much "m_mass" the object has (how hard it is to change momentum)
 		\param a_radius The size of the circle
 		\param a_colour The colour that the circle will be displayed using
 	*/
@@ -36,7 +36,7 @@ public:
 
 protected:
 	// The size of the circle
-	float radius;
+	float m_radius;
 };
 
 

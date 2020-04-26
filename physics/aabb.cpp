@@ -8,45 +8,45 @@ aabb::aabb(
 	const float a_mass /* = 1.0f*/)
 	:
 	rigid_body(shape::aabb, a_position, a_velocity, a_mass),
-	extents(a_extents)
+	m_extents(a_extents)
 {}
 
 const glm::vec2 aabb::get_position() const
 {
-	return position;
+	return m_position;
 }
 
 void aabb::set_position(const glm::vec2& a_position)
 {
-	position = a_position;
+	m_position = a_position;
 }
 
 const glm::vec2 aabb::get_extents() const
 {
-	return extents;
+	return m_extents;
 }
 
 void aabb::set_extents(const glm::vec2& a_extents)
 {
-	extents = { abs(a_extents.x), abs(a_extents.y) };
+	m_extents = { abs(a_extents.x), abs(a_extents.y) };
 }
 
 const float aabb::get_width() const
 {
-	return width;
+	return m_width;
 }
 
 const float aabb::get_height() const
 {
-	return height;
+	return m_height;
 }
 
 const glm::vec2 aabb::get_min() const
 {
-	return position - 0.5f * extents;
+	return m_position - 0.5f * m_extents;
 }
 
 const glm::vec2 aabb::get_max() const
 {
-	return position + 0.5f * extents;
+	return m_position + 0.5f * m_extents;
 }

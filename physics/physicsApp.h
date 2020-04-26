@@ -27,7 +27,7 @@ protected:
 	aie::Font* m_font;
 
 	physics_scene* m_physics_scene;
-	circle* star;
+	circle* m_star;
 
 	float m_timer;
 };
