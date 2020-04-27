@@ -45,6 +45,7 @@ void physics_scene::update(float a_delta_time)
 
 	m_accumulated_time += a_delta_time;
 
+	// Catch up with the current time by calculating for all the times that were missed
 	while (m_accumulated_time >= m_time_step)
 	{
 		for (auto p_object : m_objects)
@@ -54,6 +55,7 @@ void physics_scene::update(float a_delta_time)
 		m_accumulated_time -= m_time_step;
 	}
 
+	// The objects that have been checked
 	static std::list<physics_object*> dirty;
 
 	int object_count = m_objects.size();
@@ -83,7 +85,7 @@ void physics_scene::update(float a_delta_time)
 
 					// Resolve collision
 					// Separate
-					if (r1 && r2) // even split
+					if (r1 && r2) // both are movable objects
 					{
 						r1->set_position(r1->get_position() + 0.5f * result);
 						r2->set_position(r2->get_position() - 0.5f * result);

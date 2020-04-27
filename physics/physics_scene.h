@@ -21,8 +21,9 @@ public:
 	~physics_scene();
 
 	// Adds a new object for the physics_scene to be in charge of
-	void add_object(physics_object* a_actor);
-	void remove_object(physics_object* a_actor);
+	void add_object(physics_object* a_object);
+	// Removes an object from the scene
+	void remove_object(physics_object* a_object);
 	// Calculates all physics
 	void update(float a_delta_time);
 	// Sets up all m_objects to be able to draw

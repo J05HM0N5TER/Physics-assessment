@@ -14,6 +14,7 @@ public:
 
 	~rigid_body() {};
 
+	// For updating all physics
 	virtual void fixed_update(glm::vec2 a_gravity, float a_time_step);
 	virtual void debug() {};
 

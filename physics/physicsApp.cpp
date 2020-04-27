@@ -49,12 +49,13 @@ bool physicsApp::startup()
 	m_physics_scene->add_object(lhdu);
 	m_physics_scene->add_object(rhdu);
 
-	// Add a whole lot of circles
-	for (int x = 0; x < 10; ++x)
+	// Add circles to show off collisions
+	for (int x = 0; x < 8; ++x)
 	{
-		for (int y = 0; y < 10; ++y)
+		for (int y = 0; y < 8; ++y)
 		{
-			m_physics_scene->add_object(new circle(glm::vec2(-8 + x, 3 - y)));
+			// Add lots of circles at middle of screen
+			m_physics_scene->add_object(new circle(glm::vec2(-5 + x, 3 - y)));
 		}
 	}
 
@@ -80,28 +81,14 @@ void physicsApp::update(float deltaTime)
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 
-	// Update the camera m_position using the arrow keys
-	float camPosX;
-	float camPosY;
-	m_2dRenderer->getCameraPos(camPosX, camPosY);
-
-	if (input->isKeyDown(aie::INPUT_KEY_UP))
-		camPosY += 500.0f * deltaTime;
-
-	if (input->isKeyDown(aie::INPUT_KEY_DOWN))
-		camPosY -= 500.0f * deltaTime;
-
-	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
-		camPosX -= 500.0f * deltaTime;
-
-	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
-		camPosX += 500.0f * deltaTime;
-
-	m_2dRenderer->setCameraPos(camPosX, camPosY);
 
 	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
 	{
 		m_physics_scene->set_gravity(glm::vec2(0.0f, -10.0f));
+	}
+	else if (input->wasKeyPressed(aie::INPUT_KEY_BACKSPACE))
+	{
+		m_physics_scene->set_gravity(glm::vec2(0.0f, 0.0f));
 	}
 
 	// exit the application

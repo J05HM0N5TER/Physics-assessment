@@ -17,11 +17,7 @@ const glm::vec2 line::get_normal() const
 
 void line::set_normal(const glm::vec2& a_normal)
 {
-	if (glm::length(a_normal) <= 0.0f)
-	{
-
-	}
-	else
+	if (glm::length(a_normal) > 0.0f)
 	{
 		m_normal = glm::normalize(a_normal);
 	}
@@ -42,10 +38,11 @@ void line::make_gizmo()
 {
 	glm::vec2 centre_point = m_normal * m_distance_from_origin;
 	glm::vec2 draw_direction(m_normal.y, -m_normal.x);
+
 	aie::Gizmos::add2DLine(
-		centre_point + (draw_direction * 500.0f),
-		centre_point - (draw_direction * 500.0f),
-		glm::vec4(1.0f));
+		centre_point + (draw_direction * 500.0f), // Point A
+		centre_point - (draw_direction * 500.0f), // Point B
+		glm::vec4(1.0f)); // Colour
 }
 
 void line::resolve_collision(rigid_body* a_other)

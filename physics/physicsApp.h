@@ -26,8 +26,8 @@ protected:
 	aie::Renderer2D* m_2dRenderer;
 	aie::Font* m_font;
 
+	// The physics_scene that is in charge of all physics
 	physics_scene* m_physics_scene;
-	circle* m_star;
 
 	float m_timer;
 };

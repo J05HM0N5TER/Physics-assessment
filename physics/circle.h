@@ -16,6 +16,7 @@ public:
 		float a_mass = 1.0f,
 		float a_radius = 1.0f,
 		glm::vec4 a_colour = glm::vec4(0.1f, 0.1f, 0.8f, 1.0f));
+
 	~circle();
 
 	// Create the gizmo (draw on screen)

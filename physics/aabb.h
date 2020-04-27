@@ -38,12 +38,13 @@ public:
 	bool check_collision(physics_object* a_other) override { return false; }
 	void make_gizmo() override
 	{
-		aie::Gizmos::add2DAABBFilled(m_position, m_extents * 0.5f, color);
+		aie::Gizmos::add2DAABBFilled(m_position, m_extents * 0.5f, m_color);
 	}
 
 private:
 	union
 	{
+		// The height and width of AABB
 		glm::vec2 m_extents;
 		struct
 		{
